@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PerzonalizedDictionary"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="PersonalizedDictionary" Height="250" Width="330">
     <Grid>
-        
+        <TextBox x:Name="txbForeName" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Voornaam" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979"/>
+        <TextBox x:Name="txbAge" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="Leeftijd" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979"/>
+        <TextBox x:Name="txbBirthDate" HorizontalAlignment="Left" Height="23" Margin="10,66,0,0" TextWrapping="Wrap" Text="Geboortedatum" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979"/>
+        <TextBox x:Name="txbHouseStreet" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" Text="Straat" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979"/>
+        <TextBox x:Name="txbHouseNumber" HorizontalAlignment="Left" Height="23" Margin="10,122,0,0" TextWrapping="Wrap" Text="Huisnummer" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979"/>
+        <TextBox x:Name="txbExtra" HorizontalAlignment="Left" Height="23" Margin="10,150,0,0" TextWrapping="Wrap" Text="Extra" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979"/>
+        <TextBox x:Name="txbMiddleName1" HorizontalAlignment="Left" Height="23" Margin="135,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="42" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979"/>
+        <TextBox x:Name="TxbLastName" HorizontalAlignment="Left" Height="23" Margin="182,10,0,0" TextWrapping="Wrap" Text="Achternaam" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979"/>
+        <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Left" Margin="238,191,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="lblCountPasswords" Content="... Results" HorizontalAlignment="Left" Margin="10,188,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
