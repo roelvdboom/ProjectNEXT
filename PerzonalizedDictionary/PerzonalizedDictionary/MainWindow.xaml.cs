@@ -20,20 +20,26 @@ namespace PerzonalizedDictionary
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Variables
+        List<String> input = new List<string>();
+        BrushConverter converter;
+        Brush brush;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            converter = new BrushConverter();
+
+            //Color Grey to brush
+            brush = (Brush)converter.ConvertFromString("#FF797979");
         }
 
         private void PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             //Use textbox that u clicked on
             TextBox txb = (TextBox)sender;
-
-            //Take the grey color into a brush
-            BrushConverter converter = new BrushConverter();
-            Brush brush = (Brush)converter.ConvertFromString("#FF797979");
-
+            
             //Check if the text is grey
             if (txb.Foreground.ToString() == brush.ToString())
             {
@@ -41,6 +47,105 @@ namespace PerzonalizedDictionary
                 txb.Text = String.Empty;
                 txb.Foreground = Brushes.Black;
             }
+        }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            //Get all textboxes into a list
+            List<TextBox> tb = new List<TextBox>();
+            FindTextBoxex(this, tb);
+
+            //Add each part of a item to the input list
+            foreach (TextBox txb in tb)
+            {
+                if (txb.Foreground.ToString() != brush.ToString())
+                {
+                    if(txb.Text != String.Empty)
+                    {
+                        if (txb.Text.Contains(" "))
+                        {
+                            string[] s = txb.Text.Split(' ');
+                            foreach (string x in s)
+                            {
+                                input.Add(x);
+                            }
+                        }
+                        else if (txb.Text.Contains("-"))
+                        {
+                            string[] s = txb.Text.Split('-');
+                            StringBuilder sb = new StringBuilder();
+
+                            foreach (string item in s)
+                            {
+                                sb.Append(item);
+                            }
+
+                            input.Add(sb.ToString());
+
+                            foreach (string x in s)
+                            {
+                                input.Add(x);
+                            }
+                        }
+                        else
+                        {
+                            input.Add(txb.Text);
+                        }
+                    }
+                }
+            }
+
+            //Create all posibillities
+            List<string> output = new List<string>();
+
+            int y = input.Count - 1;
+            for (int i = 0; i < input.Count; i++)
+            {
+                for (int x = 0; x < input.Count; x++)
+                {
+                    string s = input[i] + input[x];
+                    output.Add(s);
+                }
+            }
+
+            //Show records
+            lblCountPasswords.Content = output.Count.ToString() + " Results";
+            lbSource.ItemsSource = output;
+
+            MessageBox.Show("Done");
+        }
+
+        void FindTextBoxex(object uiElement, IList<TextBox> foundOnes)
+        {
+            //Put all Textboxes into a list
+            if (uiElement is TextBox)
+            {
+                foundOnes.Add((TextBox)uiElement);
+            }
+            else if (uiElement is Panel)
+            {
+                var uiElementAsCollection = (Panel)uiElement;
+                foreach (var element in uiElementAsCollection.Children)
+                {
+                    FindTextBoxex(element, foundOnes);
+                }
+            }
+            else if (uiElement is UserControl)
+            {
+                var uiElementAsUserControl = (UserControl)uiElement;
+                FindTextBoxex(uiElementAsUserControl.Content, foundOnes);
+            }
+            else if (uiElement is ContentControl)
+            {
+                var uiElementAsContentControl = (ContentControl)uiElement;
+                FindTextBoxex(uiElementAsContentControl.Content, foundOnes);
+            }
+        }
+
+        private void PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            //Redirect to PreviewMouseDown
+            PreviewMouseDown(sender, null);
         }
     }
 }
