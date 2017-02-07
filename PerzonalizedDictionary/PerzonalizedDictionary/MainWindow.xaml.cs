@@ -24,5 +24,23 @@ namespace PerzonalizedDictionary
         {
             InitializeComponent();
         }
+
+        private void PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //Use textbox that u clicked on
+            TextBox txb = (TextBox)sender;
+
+            //Take the grey color into a brush
+            BrushConverter converter = new BrushConverter();
+            Brush brush = (Brush)converter.ConvertFromString("#FF797979");
+
+            //Check if the text is grey
+            if (txb.Foreground.ToString() == brush.ToString())
+            {
+                //Clear the textbox and change the color to black
+                txb.Text = String.Empty;
+                txb.Foreground = Brushes.Black;
+            }
+        }
     }
 }
