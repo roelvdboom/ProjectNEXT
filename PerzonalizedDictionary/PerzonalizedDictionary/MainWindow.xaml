@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PerzonalizedDictionary"
         mc:Ignorable="d"
-        Title="PersonalizedDictionary" Height="350" Width="640
-        ">
+        Title="PersonalizedDictionary" Height="350" Width="640"
+        Icon="dictionary.png"
+        >
+   
     <Grid Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
