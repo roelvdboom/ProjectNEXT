@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="PersonalizedDictionary" Height="350" Width="640
         ">
-    <Grid>
+    <Grid Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
             <RowDefinition />
@@ -19,15 +19,228 @@
         
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="txbForeName" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="Voornaam" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979" PreviewKeyDown="PreviewKeyDown"/>
+                <TextBox x:Name="txbForeName" 
+                         HorizontalAlignment="Left" 
+                         Height="23" Margin="10" 
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top"
+                         Width="120" 
+                         PreviewMouseDown="PreviewMouseDown"
+                         PreviewKeyDown="PreviewKeyDown">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="Voornaam" Foreground="Gray" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
                 <TextBox x:Name="txbMiddleName1" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="42" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979" PreviewKeyDown="PreviewKeyDown"/>
-                <TextBox x:Name="TxbLastName" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="Achternaam" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979" PreviewKeyDown="PreviewKeyDown"/>
+                <TextBox x:Name="TxbLastName" 
+                         HorizontalAlignment="Left" 
+                         Height="23" Margin="10" 
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top" 
+                         Width="120" 
+                         PreviewMouseDown="PreviewMouseDown"
+                         PreviewKeyDown="PreviewKeyDown">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="Achternaam" Foreground="Gray" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
             </StackPanel>
-            <TextBox x:Name="txbAge" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="Leeftijd" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979" PreviewKeyDown="PreviewKeyDown"/>
-            <TextBox x:Name="txbBirthDate" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="Geboortedatum" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979" PreviewKeyDown="PreviewKeyDown"/>
-            <TextBox x:Name="txbHouseStreet" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="Straat" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979" PreviewKeyDown="PreviewKeyDown"/>
-            <TextBox x:Name="txbHouseNumber" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="Huisnummer" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979" PreviewKeyDown="PreviewKeyDown"/>
-            <TextBox x:Name="txbExtra" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="Extra" VerticalAlignment="Top" Width="120" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979" PreviewKeyDown="PreviewKeyDown"/>
+            <TextBox x:Name="txbAge" 
+                     HorizontalAlignment="Left" 
+                     Height="23" Margin="10" 
+                     TextWrapping="Wrap"
+                     VerticalAlignment="Top" 
+                     Width="120" 
+                     PreviewMouseDown="PreviewMouseDown"
+                     PreviewKeyDown="PreviewKeyDown">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Leeftijd" Foreground="Gray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="txbBirthDate" 
+                     HorizontalAlignment="Left" 
+                     Height="23" Margin="10" 
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top" 
+                     Width="120" 
+                     PreviewMouseDown="PreviewMouseDown" 
+                     PreviewKeyDown="PreviewKeyDown">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Geboortedatum" Foreground="Gray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="txbHouseStreet" 
+                     HorizontalAlignment="Left" 
+                     Height="23" 
+                     Margin="10" 
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top" 
+                     Width="120" 
+                     PreviewMouseDown="PreviewMouseDown" 
+                     PreviewKeyDown="PreviewKeyDown">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Straat" Foreground="Gray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="txbHouseNumber" 
+                     HorizontalAlignment="Left" 
+                     Height="23" 
+                     Margin="10" 
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top" 
+                     Width="120" 
+                     PreviewMouseDown="PreviewMouseDown" 
+                     PreviewKeyDown="PreviewKeyDown">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Huisnummer" Foreground="Gray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="txbExtra" 
+                     HorizontalAlignment="Left" 
+                     Height="23" 
+                     Margin="10" 
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top" 
+                     Width="120" 
+                     PreviewMouseDown="PreviewMouseDown" 
+                     PreviewKeyDown="PreviewKeyDown">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Extra" Foreground="Gray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2">

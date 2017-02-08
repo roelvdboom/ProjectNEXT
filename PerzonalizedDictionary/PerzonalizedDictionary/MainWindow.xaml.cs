@@ -35,11 +35,11 @@ namespace PerzonalizedDictionary
             brush = (Brush)converter.ConvertFromString("#FF797979");
         }
 
-        private void PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private new void PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             //Use textbox that u clicked on
             TextBox txb = (TextBox)sender;
-            
+
             //Check if the text is grey
             if (txb.Foreground.ToString() == brush.ToString())
             {
@@ -64,6 +64,8 @@ namespace PerzonalizedDictionary
             lblCountPasswords.Content = output.Count.ToString() + " Results";
             //lbSource.ItemsSource = output;
             lvResult.ItemsSource = output;
+
+            
         }
 
         void FindTextBoxex(object uiElement, IList<TextBox> foundOnes)
@@ -93,7 +95,7 @@ namespace PerzonalizedDictionary
             }
         }
 
-        private void PreviewKeyDown(object sender, KeyEventArgs e)
+        private new void PreviewKeyDown(object sender, KeyEventArgs e)
         {
             //Redirect to PreviewMouseDown
             PreviewMouseDown(sender, null);
