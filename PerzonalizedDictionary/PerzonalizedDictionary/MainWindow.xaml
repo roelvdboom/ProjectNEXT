@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PerzonalizedDictionary"
         mc:Ignorable="d"
-        Title="PersonalizedDictionary" Height="350" Width="640"
+        Title="PersonalizedDictionary" Height="400" Width="640"
         Icon="dictionary.png"
         >
    
@@ -21,6 +21,7 @@
         
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Name: " HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
                 <TextBox x:Name="txbFirstname" 
                          HorizontalAlignment="Left" 
                          Height="23" Margin="10" 
@@ -32,7 +33,7 @@
                             <Style.Resources>
                                 <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                                     <VisualBrush.Visual>
-                                        <Label Content="Voornaam" Foreground="Gray" />
+                                        <Label Content="First name" Foreground="Gray" />
                                     </VisualBrush.Visual>
                                 </VisualBrush>
                             </Style.Resources>
@@ -68,7 +69,7 @@
                             <Style.Resources>
                                 <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                                     <VisualBrush.Visual>
-                                        <Label Content="Achternaam" Foreground="Gray" />
+                                        <Label Content="Last name" Foreground="Gray" />
                                     </VisualBrush.Visual>
                                 </VisualBrush>
                             </Style.Resources>
@@ -88,41 +89,10 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="txbAge" 
+            <TextBox x:Name="txbAge" 
                      HorizontalAlignment="Left" 
                      Height="23" Margin="10" 
                      TextWrapping="Wrap"
-                     VerticalAlignment="Top" 
-                     Width="120">
-                    <TextBox.Style>
-                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                            <Style.Resources>
-                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                    <VisualBrush.Visual>
-                                        <Label Content="Leeftijd" Foreground="Gray" />
-                                    </VisualBrush.Visual>
-                                </VisualBrush>
-                            </Style.Resources>
-                            <Style.Triggers>
-                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                </Trigger>
-                                <Trigger Property="Text" Value="{x:Null}">
-                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                </Trigger>
-                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                    <Setter Property="Background" Value="White" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBox.Style>
-                </TextBox>
-             
-            </StackPanel>
-            <TextBox x:Name="txbBirthDate" 
-                     HorizontalAlignment="Left" 
-                     Height="23" Margin="10" 
-                     TextWrapping="Wrap" 
                      VerticalAlignment="Top" 
                      Width="120">
                 <TextBox.Style>
@@ -130,7 +100,7 @@
                         <Style.Resources>
                             <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                                 <VisualBrush.Visual>
-                                    <Label Content="Geboortedatum" Foreground="Gray" />
+                                    <Label Content="Age" Foreground="Gray" />
                                 </VisualBrush.Visual>
                             </VisualBrush>
                         </Style.Resources>
@@ -148,6 +118,50 @@
                     </Style>
                 </TextBox.Style>
             </TextBox>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Birthday: " Width="50" VerticalAlignment="Center"/>
+                <DatePicker Name="dpBirthday"  
+                            HorizontalAlignment="Left" 
+                            Margin="10"
+                            Width="120"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="City: " VerticalAlignment="Center" Width="50"/>
+                <TextBox x:Name="txbCity" 
+                     HorizontalAlignment="Left" 
+                     Height="23" Margin="10" 
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top" 
+                     Width="120">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="City" Foreground="Gray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Street: " Width="50" VerticalAlignment="Center"/>
             <TextBox x:Name="txbHouseStreet" 
                      HorizontalAlignment="Left" 
                      Height="23" 
@@ -160,7 +174,7 @@
                         <Style.Resources>
                             <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                                 <VisualBrush.Visual>
-                                    <Label Content="Straat" Foreground="Gray" />
+                                    <Label Content="Street" Foreground="Gray" />
                                 </VisualBrush.Visual>
                             </VisualBrush>
                         </Style.Resources>
@@ -178,6 +192,9 @@
                     </Style>
                 </TextBox.Style>
             </TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Number:" VerticalAlignment="Center" Width="50"/>
             <TextBox x:Name="txbHouseNumber" 
                      HorizontalAlignment="Left" 
                      Height="23" 
@@ -190,7 +207,7 @@
                         <Style.Resources>
                             <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                                 <VisualBrush.Visual>
-                                    <Label Content="Huisnummer" Foreground="Gray" />
+                                    <Label Content="House Number" Foreground="Gray" />
                                 </VisualBrush.Visual>
                             </VisualBrush>
                         </Style.Resources>
@@ -208,6 +225,9 @@
                     </Style>
                 </TextBox.Style>
             </TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Extra:" VerticalAlignment="Center" Width="50"/>
             <TextBox x:Name="txbExtra" 
                      HorizontalAlignment="Left" 
                      Height="23" 
@@ -238,6 +258,7 @@
                     </Style>
                 </TextBox.Style>
             </TextBox>
+        </StackPanel>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2">

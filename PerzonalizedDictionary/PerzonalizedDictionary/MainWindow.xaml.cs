@@ -21,13 +21,13 @@ namespace PerzonalizedDictionary
     /// </summary>
     public partial class MainWindow : Window
     {
-        Dictionary<DataEnum.DataType, string> values;
+       // Dictionary<DataEnum.DataType, string> values;
         List<string> output;
 
         public MainWindow()
         {
             InitializeComponent();
-            values = new Dictionary<DataEnum.DataType, string>();
+           // values = new Dictionary<DataEnum.DataType, string>();
             output = new List<string>();
 
             this.Loaded += MainWindow_Loaded;
@@ -47,7 +47,7 @@ namespace PerzonalizedDictionary
             List<TextBox> tb = new List<TextBox>();
             FindTextBoxex(this, tb);
 
-            FillDictionary();
+            //FillDictionary();
 
             List<string> input = ConvertTextBoxesToList(tb);
 
@@ -93,34 +93,6 @@ namespace PerzonalizedDictionary
             }
         }
 
-        public void FillDictionary()
-        {
-            UpdateKeyValue(DataEnum.DataType.Voornaam, txbFirstname.Text);
-            UpdateKeyValue(DataEnum.DataType.Tussenvoegsel, txbMiddleName.Text);
-            UpdateKeyValue(DataEnum.DataType.Achternaam, txbLastName.Text);
-            UpdateKeyValue(DataEnum.DataType.Leeftijd, txbAge.Text);
-            UpdateKeyValue(DataEnum.DataType.Geboortedatum, txbBirthDate.Text);
-            UpdateKeyValue(DataEnum.DataType.Straat, txbHouseStreet.Text);
-            UpdateKeyValue(DataEnum.DataType.Huisnummer, txbHouseNumber.Text);
-            UpdateKeyValue(DataEnum.DataType.Extra, txbExtra.Text);
-        }
-
-        private void UpdateKeyValue(DataEnum.DataType type, string value)
-        {
-            if (String.IsNullOrEmpty(value))
-            {
-                return;
-            }
-
-            if (values.ContainsKey(type))
-            {
-                values[type] = value;
-            }
-            else
-            {
-                values.Add(type, value);
-            }
-        }
 
         private List<string> ConvertTextBoxesToList(List<TextBox> tb)
         {
