@@ -95,7 +95,7 @@ namespace PerzonalizedDictionary
             UpdateKeyValue(DataEnum.DataType.Tussenvoegsel, txbMiddleName.Text);
             UpdateKeyValue(DataEnum.DataType.Achternaam, txbLastName.Text);
             UpdateKeyValue(DataEnum.DataType.Leeftijd, txbAge.Text);
-            UpdateKeyValue(DataEnum.DataType.Geboortedatum, txbBirthDate.Text);
+            //UpdateKeyValue(DataEnum.DataType.Geboortedatum, txbBirthDate.Text);
             UpdateKeyValue(DataEnum.DataType.Straat, txbHouseStreet.Text);
             UpdateKeyValue(DataEnum.DataType.Huisnummer, txbHouseNumber.Text);
             UpdateKeyValue(DataEnum.DataType.Extra, txbExtra.Text);
