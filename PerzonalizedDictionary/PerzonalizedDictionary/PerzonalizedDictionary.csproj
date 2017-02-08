@@ -65,7 +65,9 @@
     </Compile>
     <Compile Include="Controllers\FileReaderWriter.cs" />
     <Compile Include="Controllers\PasswordGenerator.cs" />
-    <Compile Include="DataEnum.cs" />
+    <Compile Include="Data\Address.cs" />
+    <Compile Include="Data\DataClass.cs" />
+    <Compile Include="Data\Person.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
