@@ -54,6 +54,10 @@ namespace PerzonalizedDictionary
             //Create all posibillities
             output = PasswordGenerator.GeneratePasswords(input);
 
+            OptionWindow window = new OptionWindow();
+            window.ShowDialog();
+            List<string> results = window.result;
+
             //Show records
             lblCountPasswords.Content = output.Count.ToString() + " Results";
 
