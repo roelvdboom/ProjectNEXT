@@ -23,7 +23,7 @@ namespace PerzonalizedDictionary.Controllers
             }
             catch(Exception ex)
             {
-
+                Console.Write(ex.Message);
             }
             
             //Return list

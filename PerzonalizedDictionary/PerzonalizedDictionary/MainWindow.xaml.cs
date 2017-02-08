@@ -21,18 +21,10 @@ namespace PerzonalizedDictionary
     /// </summary>
     public partial class MainWindow : Window
     {
-        //Variables
-        BrushConverter converter;
-        Brush brush;
-
+        
         public MainWindow()
         {
             InitializeComponent();
-
-            converter = new BrushConverter();
-
-            //Color Grey to brush
-            brush = (Brush)converter.ConvertFromString("#FF797979");
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
@@ -48,7 +40,6 @@ namespace PerzonalizedDictionary
 
             //Show records
             lblCountPasswords.Content = output.Count.ToString() + " Results";
-
 
             lvResult.ItemsSource = output;
 
@@ -86,42 +77,38 @@ namespace PerzonalizedDictionary
         {
             List<string> input = new List<string>();
 
-            //Add each part of a item to the input list
-            foreach (TextBox txb in tb)
+            foreach(TextBox txb in tb)
             {
-                if (txb.Foreground.ToString() != brush.ToString())
+                if (txb.Text != String.Empty)
                 {
-                    if (txb.Text != String.Empty)
+                    if (txb.Text.Contains(" "))
                     {
-                        if (txb.Text.Contains(" "))
+                        string[] s = txb.Text.Split(' ');
+                        foreach (string x in s)
                         {
-                            string[] s = txb.Text.Split(' ');
-                            foreach (string x in s)
-                            {
-                                input.Add(x);
-                            }
+                            input.Add(x);
                         }
-                        else if (txb.Text.Contains("-"))
+                    }
+                    else if (txb.Text.Contains("-"))
+                    {
+                        string[] s = txb.Text.Split('-');
+                        StringBuilder sb = new StringBuilder();
+
+                        foreach (string item in s)
                         {
-                            string[] s = txb.Text.Split('-');
-                            StringBuilder sb = new StringBuilder();
-
-                            foreach (string item in s)
-                            {
-                                sb.Append(item);
-                            }
-
-                            input.Add(sb.ToString());
-
-                            foreach (string x in s)
-                            {
-                                input.Add(x);
-                            }
+                            sb.Append(item);
                         }
-                        else
+
+                        input.Add(sb.ToString());
+
+                        foreach (string x in s)
                         {
-                            input.Add(txb.Text);
+                            input.Add(x);
                         }
+                    }
+                    else
+                    {
+                        input.Add(txb.Text);
                     }
                 }
             }
