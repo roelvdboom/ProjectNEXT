@@ -11,21 +11,23 @@ namespace PerzonalizedDictionary.Controllers
     {
         public static void WriteFile(List<string> output)
         {
-            output.AddRange(readFile());
             File.WriteAllLines("dictionary.txt", output);
         }
 
-        private static List<string> readFile()
+        public static List<string> readFile()
         {
-            List<string> values = new List<string>();
-            //Open file picker
-
             //Read file
+            try
+            {
+               return File.ReadAllLines("test.txt").ToList();
+            }
+            catch(Exception ex)
+            {
 
-            //Text to list string
-
+            }
+            
             //Return list
-            return values;
+            return new List<string>();
         }
     }
 }

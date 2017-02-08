@@ -62,7 +62,8 @@ namespace PerzonalizedDictionary
 
             //Show records
             lblCountPasswords.Content = output.Count.ToString() + " Results";
-            //lbSource.ItemsSource = output;
+
+
             lvResult.ItemsSource = output;
 
             FileReaderWriter.WriteFile(output);

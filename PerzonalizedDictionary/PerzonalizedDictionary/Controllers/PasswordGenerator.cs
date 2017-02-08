@@ -22,6 +22,8 @@ namespace PerzonalizedDictionary.Controllers
                 }
             }
 
+
+            output.AddRange(FileReaderWriter.readFile());
             output.Sort();
             return output;
         }
