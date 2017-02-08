@@ -29,8 +29,17 @@ namespace PerzonalizedDictionary
             InitializeComponent();
             values = new Dictionary<DataEnum.DataType, string>();
             output = new List<string>();
+
+            this.Loaded += MainWindow_Loaded;
         }
-        
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            double newHeight = this.ActualHeight;
+            newHeight -= lblCountPasswords.ActualHeight;
+            newHeight -= 60;
+            lvResult.Height = newHeight;
+        }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
