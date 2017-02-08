@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PerzonalizedDictionary.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,6 @@ namespace PerzonalizedDictionary
     public partial class MainWindow : Window
     {
         //Variables
-        List<String> input = new List<string>();
         BrushConverter converter;
         Brush brush;
 
@@ -55,12 +55,60 @@ namespace PerzonalizedDictionary
             List<TextBox> tb = new List<TextBox>();
             FindTextBoxex(this, tb);
 
+            List<string> input = ConvertTextBoxesToList(tb);
+
+            //Create all posibillities
+            List<string> output = PasswordGenerator.GeneratePasswords(input);
+
+            //Show records
+            lblCountPasswords.Content = output.Count.ToString() + " Results";
+            //lbSource.ItemsSource = output;
+            lvResult.ItemsSource = output;
+        }
+
+        void FindTextBoxex(object uiElement, IList<TextBox> foundOnes)
+        {
+            //Put all Textboxes into a list
+            if (uiElement is TextBox)
+            {
+                foundOnes.Add((TextBox)uiElement);
+            }
+            else if (uiElement is Panel)
+            {
+                var uiElementAsCollection = (Panel)uiElement;
+                foreach (var element in uiElementAsCollection.Children)
+                {
+                    FindTextBoxex(element, foundOnes);
+                }
+            }
+            else if (uiElement is UserControl)
+            {
+                var uiElementAsUserControl = (UserControl)uiElement;
+                FindTextBoxex(uiElementAsUserControl.Content, foundOnes);
+            }
+            else if (uiElement is ContentControl)
+            {
+                var uiElementAsContentControl = (ContentControl)uiElement;
+                FindTextBoxex(uiElementAsContentControl.Content, foundOnes);
+            }
+        }
+
+        private void PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            //Redirect to PreviewMouseDown
+            PreviewMouseDown(sender, null);
+        }
+
+        private List<string> ConvertTextBoxesToList(List<TextBox> tb)
+        {
+            List<string> input = new List<string>();
+
             //Add each part of a item to the input list
             foreach (TextBox txb in tb)
             {
                 if (txb.Foreground.ToString() != brush.ToString())
                 {
-                    if(txb.Text != String.Empty)
+                    if (txb.Text != String.Empty)
                     {
                         if (txb.Text.Contains(" "))
                         {
@@ -95,57 +143,7 @@ namespace PerzonalizedDictionary
                 }
             }
 
-            //Create all posibillities
-            List<string> output = new List<string>();
-
-            int y = input.Count - 1;
-            for (int i = 0; i < input.Count; i++)
-            {
-                for (int x = 0; x < input.Count; x++)
-                {
-                    string s = input[i] + input[x];
-                    output.Add(s);
-                }
-            }
-
-            //Show records
-            lblCountPasswords.Content = output.Count.ToString() + " Results";
-            lbSource.ItemsSource = output;
-
-            MessageBox.Show("Done");
-        }
-
-        void FindTextBoxex(object uiElement, IList<TextBox> foundOnes)
-        {
-            //Put all Textboxes into a list
-            if (uiElement is TextBox)
-            {
-                foundOnes.Add((TextBox)uiElement);
-            }
-            else if (uiElement is Panel)
-            {
-                var uiElementAsCollection = (Panel)uiElement;
-                foreach (var element in uiElementAsCollection.Children)
-                {
-                    FindTextBoxex(element, foundOnes);
-                }
-            }
-            else if (uiElement is UserControl)
-            {
-                var uiElementAsUserControl = (UserControl)uiElement;
-                FindTextBoxex(uiElementAsUserControl.Content, foundOnes);
-            }
-            else if (uiElement is ContentControl)
-            {
-                var uiElementAsContentControl = (ContentControl)uiElement;
-                FindTextBoxex(uiElementAsContentControl.Content, foundOnes);
-            }
-        }
-
-        private void PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            //Redirect to PreviewMouseDown
-            PreviewMouseDown(sender, null);
+            return input;
         }
     }
 }
