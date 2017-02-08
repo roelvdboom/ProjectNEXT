@@ -24,9 +24,7 @@
                          Height="23" Margin="10" 
                          TextWrapping="Wrap"
                          VerticalAlignment="Top"
-                         Width="120" 
-                         PreviewMouseDown="PreviewMouseDown"
-                         PreviewKeyDown="PreviewKeyDown">
+                         Width="120" >
                     <TextBox.Style>
                         <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                             <Style.Resources>
@@ -50,15 +48,19 @@
                         </Style>
                     </TextBox.Style>
                 </TextBox>
-                <TextBox x:Name="txbMiddleName1" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="42" PreviewMouseDown="PreviewMouseDown" Foreground="#FF797979" PreviewKeyDown="PreviewKeyDown"/>
+                <TextBox x:Name="txbMiddleName1" 
+                         HorizontalAlignment="Left" 
+                         Height="23" Margin="10" 
+                         TextWrapping="Wrap" 
+                         Text="" 
+                         VerticalAlignment="Top" 
+                         Width="42" />
                 <TextBox x:Name="TxbLastName" 
                          HorizontalAlignment="Left" 
                          Height="23" Margin="10" 
                          TextWrapping="Wrap"
                          VerticalAlignment="Top" 
-                         Width="120" 
-                         PreviewMouseDown="PreviewMouseDown"
-                         PreviewKeyDown="PreviewKeyDown">
+                         Width="120">
                     <TextBox.Style>
                         <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                             <Style.Resources>
@@ -88,9 +90,7 @@
                      Height="23" Margin="10" 
                      TextWrapping="Wrap"
                      VerticalAlignment="Top" 
-                     Width="120" 
-                     PreviewMouseDown="PreviewMouseDown"
-                     PreviewKeyDown="PreviewKeyDown">
+                     Width="120">
                 <TextBox.Style>
                     <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                         <Style.Resources>
@@ -119,9 +119,7 @@
                      Height="23" Margin="10" 
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top" 
-                     Width="120" 
-                     PreviewMouseDown="PreviewMouseDown" 
-                     PreviewKeyDown="PreviewKeyDown">
+                     Width="120">
                 <TextBox.Style>
                     <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                         <Style.Resources>
@@ -151,9 +149,7 @@
                      Margin="10" 
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top" 
-                     Width="120" 
-                     PreviewMouseDown="PreviewMouseDown" 
-                     PreviewKeyDown="PreviewKeyDown">
+                     Width="120">
                 <TextBox.Style>
                     <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                         <Style.Resources>
@@ -183,9 +179,7 @@
                      Margin="10" 
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top" 
-                     Width="120" 
-                     PreviewMouseDown="PreviewMouseDown" 
-                     PreviewKeyDown="PreviewKeyDown">
+                     Width="120">
                 <TextBox.Style>
                     <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                         <Style.Resources>
@@ -215,9 +209,7 @@
                      Margin="10" 
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top" 
-                     Width="120" 
-                     PreviewMouseDown="PreviewMouseDown" 
-                     PreviewKeyDown="PreviewKeyDown">
+                     Width="120">
                 <TextBox.Style>
                     <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                         <Style.Resources>

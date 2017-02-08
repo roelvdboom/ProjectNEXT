@@ -35,20 +35,6 @@ namespace PerzonalizedDictionary
             brush = (Brush)converter.ConvertFromString("#FF797979");
         }
 
-        private new void PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            //Use textbox that u clicked on
-            TextBox txb = (TextBox)sender;
-
-            //Check if the text is grey
-            if (txb.Foreground.ToString() == brush.ToString())
-            {
-                //Clear the textbox and change the color to black
-                txb.Text = String.Empty;
-                txb.Foreground = Brushes.Black;
-            }
-        }
-
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             //Get all textboxes into a list
@@ -94,12 +80,6 @@ namespace PerzonalizedDictionary
                 var uiElementAsContentControl = (ContentControl)uiElement;
                 FindTextBoxex(uiElementAsContentControl.Content, foundOnes);
             }
-        }
-
-        private new void PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            //Redirect to PreviewMouseDown
-            PreviewMouseDown(sender, null);
         }
 
         private List<string> ConvertTextBoxesToList(List<TextBox> tb)
