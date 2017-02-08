@@ -10,6 +10,10 @@ namespace PerzonalizedDictionary.Data
 {
     class Person : DataClass
     {
+        public Person()
+        {
+                
+        }
         public Person(string firstname, string surname, string preposistion = null, Address address = null)
         {
             FirstName = firstname;
@@ -21,6 +25,7 @@ namespace PerzonalizedDictionary.Data
         private string _firstname;
         private string _surname;
         private string _preposition;
+        private DateTime? _birthdate;
         private Address _address;
 
         public string FirstName
@@ -41,6 +46,12 @@ namespace PerzonalizedDictionary.Data
         {
             get { return _preposition; }
             set { this.SetProperty(ref this._preposition, value); }
+        }
+
+        public DateTime? BirthDate
+        {
+            get { return _birthdate; }
+            set { this.SetProperty(ref this._birthdate, value); }
         }
 
         public Address Address

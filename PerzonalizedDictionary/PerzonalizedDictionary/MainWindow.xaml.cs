@@ -1,18 +1,10 @@
 ﻿using PerzonalizedDictionary.Controllers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using PerzonalizedDictionary.Data;
 
 namespace PerzonalizedDictionary
 {
@@ -23,6 +15,7 @@ namespace PerzonalizedDictionary
     {
        // Dictionary<DataEnum.DataType, string> values;
         List<string> output;
+        private Person _person;
 
         public MainWindow()
         {
@@ -30,8 +23,12 @@ namespace PerzonalizedDictionary
            // values = new Dictionary<DataEnum.DataType, string>();
             output = new List<string>();
 
+            _person = new Person();
+            _person.Address = new Address();
+            Grid.DataContext = _person;
             this.Loaded += MainWindow_Loaded;
         }
+
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {

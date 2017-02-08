@@ -10,16 +10,27 @@ namespace PerzonalizedDictionary.Data
 {
     class Address : DataClass
     {
-        public Address(string street, int number, string extra = null)
+        public Address()
+        {
+            
+        }
+        public Address(string city, string street, int number, string extra = null)
         {
             Street = street;
             Number = number;
             Extra = extra;
         }
 
+        private string _city;
         private string _street;
         private int _number;
         private string _extra;
+
+        public string City
+        {
+            get { return _city; }
+            set { this.SetProperty(ref this._city, value); }
+        }
 
         public string Street
         {
