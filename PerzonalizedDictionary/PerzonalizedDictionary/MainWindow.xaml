@@ -237,9 +237,12 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="2">
             <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="75" Click="btnStart_Click"/>
-            <Label x:Name="lblCountPasswords" Content="... Results" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top"/>
+            <Button x:Name="btnSavefile" Content="Save file" HorizontalAlignment="Left" Width="75" VerticalAlignment="Top" Margin="10" Click="btnSavefile_Click"/>
         </StackPanel>
 
-        <ListView Grid.Column="1" Grid.RowSpan="2000" Name="lvResult" Margin="10" />
+        <StackPanel Grid.Column="1" Grid.RowSpan="2000">
+            <Label x:Name="lblCountPasswords" Content="... Results" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <ListView  Name="lvResult" Margin="10"  Height="auto"/>
+        </StackPanel>
     </Grid>
 </Window>

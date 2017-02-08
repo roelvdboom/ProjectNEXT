@@ -22,12 +22,13 @@ namespace PerzonalizedDictionary
     public partial class MainWindow : Window
     {
         Dictionary<DataEnum.DataType, string> values;
-
+        List<string> output;
 
         public MainWindow()
         {
             InitializeComponent();
             values = new Dictionary<DataEnum.DataType, string>();
+            output = new List<string>();
         }
         
 
@@ -42,14 +43,14 @@ namespace PerzonalizedDictionary
             List<string> input = ConvertTextBoxesToList(tb);
 
             //Create all posibillities
-            List<string> output = PasswordGenerator.GeneratePasswords(input);
+            output = PasswordGenerator.GeneratePasswords(input);
 
             //Show records
             lblCountPasswords.Content = output.Count.ToString() + " Results";
 
             lvResult.ItemsSource = output;
 
-            FileReaderWriter.WriteFile(output);
+            
         }
 
         void FindTextBoxex(object uiElement, IList<TextBox> foundOnes)
@@ -149,6 +150,11 @@ namespace PerzonalizedDictionary
             }
 
             return input;
+        }
+
+        private void btnSavefile_Click(object sender, RoutedEventArgs e)
+        {
+            FileReaderWriter.WriteFile(output);
         }
     }
 }
