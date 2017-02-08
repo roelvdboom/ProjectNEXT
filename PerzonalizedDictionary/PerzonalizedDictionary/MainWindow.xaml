@@ -18,7 +18,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
+        
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Name: " HorizontalAlignment="Left" VerticalAlignment="Center" Width="50"/>
@@ -134,7 +134,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Street: " Width="50" VerticalAlignment="Center"/>
-                <TextBox x:Name="txbHouseStreet" 
+            <TextBox x:Name="txbHouseStreet" 
                      HorizontalAlignment="Left" 
                      Height="23" 
                      Margin="10" 
@@ -168,7 +168,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Number:" VerticalAlignment="Center" Width="50"/>
-                <TextBox x:Name="txbHouseNumber" 
+            <TextBox x:Name="txbHouseNumber" 
                      HorizontalAlignment="Left" 
                      Height="23" 
                      Margin="10" 
@@ -202,7 +202,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Extra:" VerticalAlignment="Center" Width="50"/>
-                <TextBox x:Name="txbExtra" 
+            <TextBox x:Name="txbExtra" 
                      HorizontalAlignment="Left" 
                      Height="23" 
                      Margin="10" 

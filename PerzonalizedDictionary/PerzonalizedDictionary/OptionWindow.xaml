@@ -1,0 +1,16 @@
+﻿<Window x:Class="PerzonalizedDictionary.OptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PerzonalizedDictionary"
+        mc:Ignorable="d"
+        Title="OptionWindow" Height="300" Width="300">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <CheckBox x:Name="cbAll" Content="All" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" />
+            <CheckBox x:Name="cbLower" Content="Lower" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" RenderTransformOrigin="-0.242,0.723"/>
+            <Button x:Name="button" Content="Close" Click="button_Click" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Window>
