@@ -65,7 +65,7 @@ namespace PerzonalizedDictionary
             //lbSource.ItemsSource = output;
             lvResult.ItemsSource = output;
 
-            
+            FileReaderWriter.WriteFile(output);
         }
 
         void FindTextBoxex(object uiElement, IList<TextBox> foundOnes)
