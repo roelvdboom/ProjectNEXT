@@ -19,7 +19,7 @@
         
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="txbForeName" 
+                <TextBox x:Name="txbFirstname" 
                          HorizontalAlignment="Left" 
                          Height="23" Margin="10" 
                          TextWrapping="Wrap"
@@ -48,14 +48,14 @@
                         </Style>
                     </TextBox.Style>
                 </TextBox>
-                <TextBox x:Name="txbMiddleName1" 
+                <TextBox x:Name="txbMiddleName" 
                          HorizontalAlignment="Left" 
                          Height="23" Margin="10" 
                          TextWrapping="Wrap" 
                          Text="" 
                          VerticalAlignment="Top" 
                          Width="42" />
-                <TextBox x:Name="TxbLastName" 
+                <TextBox x:Name="txbLastName" 
                          HorizontalAlignment="Left" 
                          Height="23" Margin="10" 
                          TextWrapping="Wrap"

@@ -21,17 +21,23 @@ namespace PerzonalizedDictionary
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        Dictionary<DataEnum.DataType, string> values;
+
+
         public MainWindow()
         {
             InitializeComponent();
+            values = new Dictionary<DataEnum.DataType, string>();
         }
+        
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             //Get all textboxes into a list
             List<TextBox> tb = new List<TextBox>();
             FindTextBoxex(this, tb);
+
+            FillDictionary();
 
             List<string> input = ConvertTextBoxesToList(tb);
 
@@ -70,6 +76,35 @@ namespace PerzonalizedDictionary
             {
                 var uiElementAsContentControl = (ContentControl)uiElement;
                 FindTextBoxex(uiElementAsContentControl.Content, foundOnes);
+            }
+        }
+
+        public void FillDictionary()
+        {
+            UpdateKeyValue(DataEnum.DataType.Voornaam, txbFirstname.Text);
+            UpdateKeyValue(DataEnum.DataType.Tussenvoegsel, txbMiddleName.Text);
+            UpdateKeyValue(DataEnum.DataType.Achternaam, txbLastName.Text);
+            UpdateKeyValue(DataEnum.DataType.Leeftijd, txbAge.Text);
+            UpdateKeyValue(DataEnum.DataType.Geboortedatum, txbBirthDate.Text);
+            UpdateKeyValue(DataEnum.DataType.Straat, txbHouseStreet.Text);
+            UpdateKeyValue(DataEnum.DataType.Huisnummer, txbHouseNumber.Text);
+            UpdateKeyValue(DataEnum.DataType.Extra, txbExtra.Text);
+        }
+
+        private void UpdateKeyValue(DataEnum.DataType type, string value)
+        {
+            if (String.IsNullOrEmpty(value))
+            {
+                return;
+            }
+
+            if (values.ContainsKey(type))
+            {
+                values[type] = value;
+            }
+            else
+            {
+                values.Add(type, value);
             }
         }
 
