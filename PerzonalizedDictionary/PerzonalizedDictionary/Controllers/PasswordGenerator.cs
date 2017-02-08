@@ -19,11 +19,21 @@ namespace PerzonalizedDictionary.Controllers
                 {
                     string s = input[i] + input[x];
                     output.Add(s);
+                    string exp =   s + "!";
+                    output.Add(exp);
+                    string lower = s.ToLower();
+                    output.Add(lower);
+                    string titlecase = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(lower);
+                    output.Add(titlecase);
+                    string titlewithexp = titlecase + "!";
+                    output.Add(titlewithexp);
+                    
                 }
             }
 
 
             output.AddRange(FileReaderWriter.readFile());
+            output = output.Distinct().ToList();
             output.Sort();
             return output;
         }
