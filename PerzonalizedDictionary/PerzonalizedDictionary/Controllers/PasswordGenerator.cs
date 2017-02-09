@@ -39,19 +39,30 @@ namespace PerzonalizedDictionary.Controllers
             {
                 for (int x = 0; x < input.Count; x++)
                 {
-                    string s = input[i] + input[x];
-                    output.Add(s);
-                    string exp =   s + "!";
-                    output.Add(exp);
-                    string lower = s.ToLower();
-                    output.Add(lower);
-                    string titlecase = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(lower);
-                    output.Add(titlecase);
-                    string titlewithexp = titlecase + "!";
-                    output.Add(titlewithexp);
+                    string firstWord = input[i];
+                    string secondWord = input[x];
+
+                    output.AddRange(CombineWords(firstWord, secondWord));
+                    output.AddRange(CombineWithUnderscore(firstWord, secondWord));
+                    output.AddRange(CombineWithLine(firstWord, secondWord));
+
+                    //string s = firstWord + secondWord;
+                    //output.Add(s);
+                    //string exp =   s + "!";
+                    //output.Add(exp);
+                    //string lower = s.ToLower();
+                    //output.Add(lower);
+                    //string titlecase = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(lower);
+                    //output.Add(titlecase);
+                    //string titlewithexp = titlecase + "!";
+                    //output.Add(titlewithexp);
                     
                 }
             }
+            List<string> ltn = ReplaceLettersWithNumbers(output);
+            List<string> ntl = ReplaceNumbersWithLetters(output);
+            output.AddRange(ltn);
+            output.AddRange(ntl);
 
             output = output.Distinct().ToList();
             output.Sort();
@@ -86,6 +97,143 @@ namespace PerzonalizedDictionary.Controllers
             {
                 input.Add(s);
             }
+        }
+
+        private List<string> CombineWords(string first, string second)
+        {
+            List<string> values = new List<string>();
+            values.Add(first + second);
+            values.Add(first.ToLower() + second.ToLower());
+            values.Add(first.ToUpper() + second.ToUpper());
+            return values;
+        }
+
+        private List<string> CombineWithUnderscore(string first, string second)
+        {
+            List<string> values = new List<string>();
+            values.Add(first.ToLower() + "_" + second.ToLower());
+            values.Add(first + "_" + second);
+            values.Add(first.ToUpper() + "_" + second.ToUpper());
+            values.Add(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(first.ToLower() + "_" + second.ToLower()));
+            return values;
+        }
+        
+        private List<string> CombineWithLine(string first, string second)
+        {
+            List<string> values = new List<string>();
+            values.Add(first.ToLower() + "-" + second.ToLower());
+            values.Add(first + "-" + second);
+            values.Add(first.ToUpper() + "-" + second.ToUpper());
+            values.Add(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(first.ToLower() + "-" + second.ToLower()));
+            return values;
+        }   
+
+        private List<string> ReplaceLettersWithNumbers(List<string> values)
+        {
+            List<string> newValues = new List<string>();
+            foreach(string s in values)
+            {
+                string newString = s;
+                if (newString.Contains("e") || newString.Contains("E"))
+                {
+                    newValues.Add(newString.Replace("e", "3"));
+                    newValues.Add(newString.Replace("E", "3"));
+                }
+
+                if (newString.Contains("a") || newString.Contains("A"))
+                {
+                    newValues.Add(newString.Replace("a", "4"));
+                    newValues.Add(newString.Replace("A", "4"));
+
+                }
+
+                if (newString.Contains("b") || newString.Contains("B"))
+                {
+                    newValues.Add(newString.Replace("b", "8"));
+                    newValues.Add(newString.Replace("B", "8"));
+                }
+
+
+                if (newString.Contains("o") || newString.Contains("O"))
+                {
+                    newValues.Add(newString.Replace("o", "0"));
+                    newValues.Add(newString.Replace("O", "0"));
+                }
+
+                if (newString.Contains("i") || newString.Contains("I"))
+                {
+                    newValues.Add(newString.Replace("i", "1"));
+                    newValues.Add(newString.Replace("I", "1"));
+                }
+
+                if (newString.Contains("t") || newString.Contains("T"))
+                {
+                    newValues.Add(newString.Replace("t", "7"));
+                    newValues.Add(newString.Replace("T", "7"));
+                }
+
+                if (newString.Contains("s") || newString.Contains("S"))
+                {
+                    newValues.Add(newString.Replace("s", "5"));
+                    newValues.Add(newString.Replace("S", "5"));
+
+                }
+            }
+            return newValues;
+        }
+
+        private List<string> ReplaceNumbersWithLetters(List<string> values)
+        {
+            List<string> newValues = new List<string>();
+            foreach (string s in values)
+            {
+                string newString = s;
+                if (newString.Contains("3"))
+                {
+                    newValues.Add(newString.Replace("3", "e"));
+                    newValues.Add(newString.Replace("3", "E"));
+                }
+
+                if (newString.Contains("4"))
+                {
+                    newValues.Add(newString.Replace("4", "a"));
+                    newValues.Add(newString.Replace("4", "A"));
+
+                }
+
+                if (newString.Contains("8"))
+                {
+                    newValues.Add(newString.Replace("8", "b"));
+                    newValues.Add(newString.Replace("8", "B"));
+                }
+
+
+                if (newString.Contains("0"))
+                {
+                    newValues.Add(newString.Replace("0", "o"));
+                    newValues.Add(newString.Replace("0", "O"));
+                }
+
+                if (newString.Contains("1"))
+                {
+                    newValues.Add(newString.Replace("1", "i"));
+                    newValues.Add(newString.Replace("1", "I"));
+                }
+
+                if (newString.Contains("7"))
+                {
+                    newValues.Add(newString.Replace("7", "t"));
+                    newValues.Add(newString.Replace("7", "T"));
+                }
+
+                if (newString.Contains("5"))
+                {
+                    newValues.Add(newString.Replace("5", "s"));
+                    newValues.Add(newString.Replace("5", "S"));
+
+                }
+            }
+            return newValues;
         }
     }
 }
