@@ -12,7 +12,7 @@ namespace PerzonalizedDictionary.Data
     {
         public Person()
         {
-                
+            _address = new Address(); 
         }
         public Person(string firstname, string surname, string preposistion = null, Address address = null)
         {
@@ -58,6 +58,19 @@ namespace PerzonalizedDictionary.Data
         {
             get { return _address; }
             set { this.SetProperty(ref this._address, value); }
+        }
+
+
+        public override string ToString()
+        {
+            string returnString = FirstName;
+            if (!string.IsNullOrWhiteSpace(Preposition))
+            {
+                returnString += " " + Preposition;
+            }
+            returnString += " " + SurName;
+
+            return returnString;
         }
     }
 }

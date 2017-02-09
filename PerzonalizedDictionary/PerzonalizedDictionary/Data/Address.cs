@@ -51,5 +51,9 @@ namespace PerzonalizedDictionary.Data
             set { this.SetProperty(ref this._extra, value); }
         }
 
+        public override string ToString()
+        {
+            return City + " " + Street + " " + Number;
+        }
     }
 }

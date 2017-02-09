@@ -24,7 +24,6 @@ namespace PerzonalizedDictionary
             output = new List<string>();
 
             _person = new Person();
-            _person.Address = new Address();
             Grid.DataContext = _person;
             this.Loaded += MainWindow_Loaded;
         }
