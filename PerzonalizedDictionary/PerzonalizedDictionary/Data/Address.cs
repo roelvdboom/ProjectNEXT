@@ -14,7 +14,7 @@ namespace PerzonalizedDictionary.Data
         {
             
         }
-        public Address(string city, string street, int number, string extra = null)
+        public Address(string city, string street, int? number, string extra = null)
         {
             Street = street;
             Number = number;
@@ -23,7 +23,7 @@ namespace PerzonalizedDictionary.Data
 
         private string _city;
         private string _street;
-        private int _number;
+        private int? _number;
         private string _extra;
 
         public string City
@@ -38,7 +38,7 @@ namespace PerzonalizedDictionary.Data
             set { this.SetProperty(ref this._street, value); }
         }
 
-        public int Number
+        public int? Number
         {
             get { return _number; }
             set { this.SetProperty(ref this._number, value); }
