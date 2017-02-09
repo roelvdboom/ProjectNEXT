@@ -39,6 +39,8 @@ namespace PerzonalizedDictionary
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
+            SetEnabled(false);
+            lblCountPasswords.Content = "~ Results";
             Start();   
         }
 
@@ -59,12 +61,11 @@ namespace PerzonalizedDictionary
         private void Start()
         {
             SetEnabled(false);
+            lblCountPasswords.Content = "~ Results";
+            System.Threading.Thread.Sleep(10);
             //Create all posibillities
             output = PasswordGenerator.GetInstance().GeneratePasswords(_person);
-
-            OptionWindow window = new OptionWindow();
-            window.ShowDialog();
-            List<string> results = window.result;
+            
 
             //Show records
             lblCountPasswords.Content = output.Count.ToString() + " Results";
