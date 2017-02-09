@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PerzonalizedDictionary.Data
 {
-    abstract class DataClass : INotifyPropertyChanged
+    public abstract class DataClass : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

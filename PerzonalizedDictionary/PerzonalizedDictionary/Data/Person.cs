@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PerzonalizedDictionary.Data
 {
-    class Person : DataClass
+    public class Person : DataClass
     {
         public Person()
         {

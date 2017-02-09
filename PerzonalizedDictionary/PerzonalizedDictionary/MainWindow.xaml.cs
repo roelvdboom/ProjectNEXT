@@ -48,7 +48,7 @@ namespace PerzonalizedDictionary
             List<string> input = ConvertTextBoxesToList(tb);
 
             //Create all posibillities
-            output = PasswordGenerator.GeneratePasswords(input);
+            output = PasswordGenerator.GetInstance().GeneratePasswords(_person);
 
             OptionWindow window = new OptionWindow();
             window.ShowDialog();
