@@ -64,6 +64,8 @@ namespace PerzonalizedDictionary.Controllers
             output.AddRange(ltn);
             output.AddRange(ntl);
 
+            output.AddRange(AddSymbols(output));
+
             output = output.Distinct().ToList();
             output.Sort();
             return output;
@@ -144,7 +146,8 @@ namespace PerzonalizedDictionary.Controllers
                 {
                     newValues.Add(newString.Replace("a", "4"));
                     newValues.Add(newString.Replace("A", "4"));
-
+                    newValues.Add(newString.Replace("a", "@"));
+                    newValues.Add(newString.Replace("A", "@"));
                 }
 
                 if (newString.Contains("b") || newString.Contains("B"))
@@ -176,8 +179,20 @@ namespace PerzonalizedDictionary.Controllers
                 {
                     newValues.Add(newString.Replace("s", "5"));
                     newValues.Add(newString.Replace("S", "5"));
-
                 }
+
+                if (newString.Contains("z") || newString.Contains("Z"))
+                {
+                    newValues.Add(newString.Replace("z", "2"));
+                    newValues.Add(newString.Replace("Z", "2"));
+                }
+
+                if (newString.Contains("g") || newString.Contains("G"))
+                {
+                    newValues.Add(newString.Replace("g", "9"));
+                    newValues.Add(newString.Replace("G", "9"));
+                }
+
             }
             return newValues;
         }
@@ -230,10 +245,55 @@ namespace PerzonalizedDictionary.Controllers
                 {
                     newValues.Add(newString.Replace("5", "s"));
                     newValues.Add(newString.Replace("5", "S"));
+                }
 
+                if (newString.Contains("2"))
+                {
+                    newValues.Add(newString.Replace("2", "z"));
+                    newValues.Add(newString.Replace("2", "Z"));
+                }
+
+                if (newString.Contains("9"))
+                {
+                    newValues.Add(newString.Replace("9", "g"));
+                    newValues.Add(newString.Replace("9", "G"));
                 }
             }
             return newValues;
+        }
+
+        private List<string> AddSymbols(List<string> values)
+        {
+            List<string> newValues = new List<string>();
+
+            foreach(string s in values)
+            {
+                foreach(string symbol in CreateSynbolList())
+                {
+                    newValues.Add(s + symbol);
+                }
+            }
+            
+            return newValues;
+        }
+
+        private List<string> CreateSynbolList()
+        {
+            List<string> values = new List<string>();
+            values.Add("!");
+            values.Add("@");
+            values.Add("#");
+            values.Add("$");
+            values.Add("%");
+            values.Add("^");
+            values.Add("&");
+            values.Add("*");
+            values.Add("(");
+            values.Add(")");
+            values.Add("-");
+            values.Add("+");
+            values.Add("1");
+            return values;
         }
     }
 }
