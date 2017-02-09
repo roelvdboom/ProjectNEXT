@@ -285,11 +285,13 @@ namespace PerzonalizedDictionary.Controllers
                 foreach(string symbol in CreateSynbolList())
                 {
                     newValues.Add(s + symbol);
+                    newValues.Add(symbol + s);
                 }
             }
             
             return newValues;
         }
+        
 
         private List<string> CreateSynbolList()
         {

@@ -204,7 +204,7 @@
                 <TextBlock Text="Extra:" VerticalAlignment="Center" Width="50"/>
             <TextBox x:Name="txbExtra" 
                      HorizontalAlignment="Left" 
-                     Height="23" 
+                     Height="64" 
                      Margin="10" 
                      TextWrapping="Wrap" 
                          Text="{Binding Address.Extra}"
