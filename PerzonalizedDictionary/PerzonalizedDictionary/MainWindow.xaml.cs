@@ -39,14 +39,26 @@ namespace PerzonalizedDictionary
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            //Get all textboxes into a list
-            List<TextBox> tb = new List<TextBox>();
-            FindTextBoxex(this, tb);
+            Start();   
+        }
 
-            //FillDictionary();
+        private void btnSavefile_Click(object sender, RoutedEventArgs e)
+        {
+            SetEnabled(false);
+            FileReaderWriter.WriteFile(output);
+            MessageBox.Show("Completed writing to file");
+            SetEnabled(true);
+        }
 
-            List<string> input = ConvertTextBoxesToList(tb);
+        private void SetEnabled(bool value)
+        {
+            btnStart.IsEnabled = value;
+            btnSavefile.IsEnabled = value;
+        }
 
+        private void Start()
+        {
+            SetEnabled(false);
             //Create all posibillities
             output = PasswordGenerator.GetInstance().GeneratePasswords(_person);
 
@@ -58,84 +70,7 @@ namespace PerzonalizedDictionary
             lblCountPasswords.Content = output.Count.ToString() + " Results";
 
             lvResult.ItemsSource = output;
-
-            
-        }
-
-        void FindTextBoxex(object uiElement, IList<TextBox> foundOnes)
-        {
-            //Put all Textboxes into a list
-            if (uiElement is TextBox)
-            {
-                foundOnes.Add((TextBox)uiElement);
-            }
-            else if (uiElement is Panel)
-            {
-                var uiElementAsCollection = (Panel)uiElement;
-                foreach (var element in uiElementAsCollection.Children)
-                {
-                    FindTextBoxex(element, foundOnes);
-                }
-            }
-            else if (uiElement is UserControl)
-            {
-                var uiElementAsUserControl = (UserControl)uiElement;
-                FindTextBoxex(uiElementAsUserControl.Content, foundOnes);
-            }
-            else if (uiElement is ContentControl)
-            {
-                var uiElementAsContentControl = (ContentControl)uiElement;
-                FindTextBoxex(uiElementAsContentControl.Content, foundOnes);
-            }
-        }
-
-
-        private List<string> ConvertTextBoxesToList(List<TextBox> tb)
-        {
-            List<string> input = new List<string>();
-
-            foreach(TextBox txb in tb)
-            {
-                if (txb.Text != String.Empty)
-                {
-                    if (txb.Text.Contains(" "))
-                    {
-                        string[] s = txb.Text.Split(' ');
-                        foreach (string x in s)
-                        {
-                            input.Add(x);
-                        }
-                    }
-                    else if (txb.Text.Contains("-"))
-                    {
-                        string[] s = txb.Text.Split('-');
-                        StringBuilder sb = new StringBuilder();
-
-                        foreach (string item in s)
-                        {
-                            sb.Append(item);
-                        }
-
-                        input.Add(sb.ToString());
-
-                        foreach (string x in s)
-                        {
-                            input.Add(x);
-                        }
-                    }
-                    else
-                    {
-                        input.Add(txb.Text);
-                    }
-                }
-            }
-
-            return input;
-        }
-
-        private void btnSavefile_Click(object sender, RoutedEventArgs e)
-        {
-            FileReaderWriter.WriteFile(output);
+            SetEnabled(true);
         }
     }
 }
