@@ -11,7 +11,15 @@ namespace PerzonalizedDictionary.Controllers
     {
         public static void WriteFile(List<string> output)
         {
-            File.WriteAllLines("dictionary.txt", output);
+            output.AddRange(readFile());
+            string fileName = DateTime.Now.Day.ToString("D2") + "-" +
+                DateTime.Now.Month.ToString("D2") + "-" +
+                DateTime.Now.Year.ToString() + " " +
+                DateTime.Now.Hour.ToString("D2") + "" +
+                DateTime.Now.Minute.ToString("D2") + "" +
+                DateTime.Now.Millisecond.ToString("D2") +
+                ";dictionary.txt";
+            File.WriteAllLines(fileName, output);
         }
 
         public static List<string> readFile()
@@ -19,7 +27,7 @@ namespace PerzonalizedDictionary.Controllers
             //Read file
             try
             {
-               return File.ReadAllLines("test.txt").ToList();
+               return File.ReadAllLines("test1M.txt").ToList();
             }
             catch(Exception ex)
             {
