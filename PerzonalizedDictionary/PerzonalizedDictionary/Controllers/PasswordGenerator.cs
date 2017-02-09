@@ -76,7 +76,10 @@ namespace PerzonalizedDictionary.Controllers
             input = new List<string>();
 
             AddToList(person.FirstName);
-            AddToList(person.Preposition);
+            if (!string.IsNullOrWhiteSpace(person.Preposition))
+            {
+                AddToList(person.Preposition.Split(' ').ToList());
+            }
             AddToList(person.SurName);
 
             if (person.BirthDate != null)
@@ -90,7 +93,10 @@ namespace PerzonalizedDictionary.Controllers
             AddToList(person.Address?.City);
             AddToList(person.Address?.Street);
             AddToList(person.Address?.Number.ToString());
-            AddToList(person.Address?.Extra);
+            if (!string.IsNullOrWhiteSpace(person.Address?.Extra))
+            {
+                AddToList(person.Address?.Extra.Split(' ').ToList());
+            }
         }
 
         private void AddToList(string s)
@@ -98,6 +104,14 @@ namespace PerzonalizedDictionary.Controllers
             if (!string.IsNullOrWhiteSpace(s))
             {
                 input.Add(s);
+            }
+        }
+
+        private void AddToList(List<string> strings)
+        {
+            foreach(string s in strings)
+            {
+                AddToList(s);
             }
         }
 
